@@ -3,47 +3,58 @@
 #include <vector>
 #include <algorithm>
 
-using matrix = std
+using matrix = std::vector<std::string>;
 
-struct Pos{
+struct Pos {
     int l, c;
-
-    Pos(int l, int c); l(l), c(c) {}
-
+    Pos(int l, int c): l(l), c(c) {}
 };
 
-std::vector<Pos> get_neib (Pos p){
+std::vector<Pos> get_neib(Pos p) {
     auto [l,c] = p;
-    return {{l,c-1},{l-1,c},{l,c+1},{l+1,c}};
+    return { {l, c - 1}, {l - 1, c}, {l, c + 1}, {l + 1, c}};
 }
 
-std::vector<Pos> shuffle (std::vector<Pos>) vet{
-    std::random_shuffle(begin(vet),end(vet));
+std::vector<Pos> shuffle(std::vector<Pos> vet){
+    std::random_shuffle(begin(vet), end(vet));
     return vet;
 }
 
 bool pode_furar (matrix& mat, Pos p){
+    int nl = mat.size();
+    int nc = mat.size();
     int cont {0};
-    for(auto viz: get_neib(p))
-        if(l <0 || l >= nl || c<0 || c >= nc)
+
+    for (auto viz : get_neib(p)){
+        auto [l,c] = viz;
+        if(l < 0 || l >= nl || c < 0 || c >= nc)
             continue;
         if(mat[viz.l][viz.c] == '#')
             cont +=1;
+    }
+    return (cont >= 3);
+}
+
+void show(matrix& mat){
+    for(auto line : mat)
+        std::cout << line << '\n';
+    getchar();
 }
 
 void furar(matrix& mat, Pos p){
     int nl = mat.size();
     int nc = mat[0].size();
     auto[l,c] = p;
-    if (l<0 || l>= nl || c<0 || c>= nc )
-    return;
+    if (l<0 || l >= nl || c<0 || c>= nc )
+        return;
     if(mat[l][c] != '#')
-    return;
+        return;
     if(!pode_furar(mat,p))
-    return;
+        return;
     mat[l][c] = '-';
-    for(auto viz : shuffle(get_neib(p)));
-
+    show(mat);
+    for(auto viz : shuffle(get_neib(p)))
+        furar(mat,viz);
 }
 
 int main (int argc, char* argv[]){
@@ -61,12 +72,7 @@ int main (int argc, char* argv[]){
     
     std::vector<std::string>  mat(nl,std::string(nc,'#'));
 
-    for (auto line : mat)
-        std::cout << line << "\n";
-
-    
-
-    furar()
+    furar(mat, Pos(1,1));
 
     return 0;
 }
