@@ -7,13 +7,13 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "/home/darlan/Área de Trabalho/ed_2022.1/02_princesa",
+      "cwd": "c:/Users/T-Gamer/Desktop/ED_2022.1",
       "environment": [],
-      "program": "/home/darlan/Área de Trabalho/ed_2022.1/02_princesa/build/Debug/outDebug",
+      "program": "c:/Users/T-Gamer/Desktop/ED_2022.1/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",
-      "externalConsole": false,
+      "console": "integratedTerminal",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
