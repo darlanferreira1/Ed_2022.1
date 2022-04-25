@@ -5,8 +5,8 @@
       "includePath": [
         "${workspaceFolder}/**"
       ],
-      "compilerPath": "/usr/bin/gcc",
-      "cStandard": "${default}",
+      "compilerPath": "C:\\mingw32\\bin\\gcc.exe",
+      "cStandard": "c11",
       "cppStandard": "c++20",
       "intelliSenseMode": "linux-gcc-x64",
       "compilerArgs": []
